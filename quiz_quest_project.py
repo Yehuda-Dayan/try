@@ -1,35 +1,6 @@
 import random
 players = [] # List to store player names and scores
-
-
-# udd new player to the game
-def add_player(name):
-    players.append({"name": name, "score": 0})
-    print(f"🎮 {name} has joined the game!")
-
-print("Welcome to the Quiz Quest!")
-number_of_players = int(input("Enter the number of players (1-4): "))
-if number_of_players < 1 or number_of_players > 4:
-    print("Invalid number of players. Please enter a number between 1 and 4.")
-    exit()
-else:
-    for i in range(number_of_players):
-        name = input(f"Enter the name of Player {i + 1}: ")
-        add_player(name)
-        print(f"Welcome, {name}!")
-
-if number_of_players == 1:
-    print("You are playing solo!")
-else:
-    print(f"Great! You have {number_of_players} players in the game.")
-print("")
-
-    
-print("Let's get started!")
-print("You will be asked a series of questions. Answer them correctly to earn points.")
-print("Good luck!")
-print("")
-
+# Question bank with categories and questions
 question_bank = {
     "History": [
         {"question": "Who was the first President of the United States?", "answer": "George Washington"},
@@ -92,12 +63,44 @@ question_bank = {
         {"question": "Which superhero is known as the 'Caped Crusader'?", "answer": "Batman"},
     ],
 }
+
+# add new player to the game
+def add_player(name):
+    players.append({"name": name, "score": 0})
+    print(f"🎮 {name} has joined the game!")
+
+print("Welcome to the Quiz Quest!")
+number_of_players = int(input("Enter the number of players (1-4): "))
+if number_of_players < 1 or number_of_players > 4:
+    print("Invalid number of players. Please enter a number between 1 and 4.")
+    exit()
+else:
+    for i in range(number_of_players):
+        name = input(f"Enter the name of Player {i + 1}: ")
+        add_player(name)
+        print(f"Welcome, {name}!")
+
+if number_of_players == 1:
+    print("You are playing solo!")
+else:
+    print(f"Great! You have {number_of_players} players in the game.")
+print("")
+
+    
+print("Let's get started!")
+print("You will be asked a series of questions. Answer them correctly to earn points.")
+print("Good luck!")
+print("")
+
+
 #multy player game
 def delete_question(category, question):
     for q in question_bank[category]:
         if q["question"] == question:
             question_bank[category].remove(q)
             break
+
+
 number_of_rounds = int(input("Enter the number of rounds you want to play: "))
 if number_of_rounds < 1:
     print("Invalid number of rounds. Please enter a positive number.")
